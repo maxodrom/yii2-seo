@@ -1,0 +1,38 @@
+{
+    "name": "maxodrom/yii2-seo",
+    "description": "Yii2 SEO compoments",
+    "keywords": ["yii2", "SEO"],
+    "homepage": "https://github.com/maxodrom/yii2-seo",
+    "type": "project",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/maxodrom/yii2-seo/issues?state=open",
+        "wiki": "https://github.com/maxodrom/yii2-seo/wiki",
+        "source": "https://github.com/maxodrom/yii2-seo"
+    },
+    "authors": [
+        {
+            "name": "Max Alexandrov",
+            "email": "max@7u3.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "yiisoft/yii2-coding-standards": "~2.0.0",
+        "codeception/codeception": "~2.0",
+        "codeception/specify": "~1.1",
+        "codeception/verify": "~1.0",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "maxodrom\\yii2seo\\": "src/"
+        }
+    }
+}
