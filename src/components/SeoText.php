@@ -156,6 +156,7 @@ class SeoText extends Component
      * @param string|null $characterPattern
      * @return int
      * @throws \yii\base\Exception
+     * @since 1.1
      */
     public function getCharactersCount($characterPattern = null)
     {
@@ -178,6 +179,7 @@ class SeoText extends Component
      * @param null $spacePattern
      * @return int
      * @throws \yii\base\Exception
+     * @since 1.1
      */
     public function getTotalCharactersCount($characterPattern = null, $spacePattern = null)
     {
