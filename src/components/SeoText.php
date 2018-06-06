@@ -32,6 +32,7 @@ class SeoText extends Component
      * @var array Useful general patterns.
      */
     protected static $patterns = [
+        'character' => '/\S/iu',
         'word' => '/[\w\-]+/iu',
         'space' => '/\s/u',
         'spaces' => '/\s+/u',
@@ -96,6 +97,8 @@ class SeoText extends Component
     }
 
     /**
+     * Splits text into words.
+     *
      * @param null $wordPattern
      * @return array[]|false|string[]
      * @throws \yii\base\Exception
@@ -115,6 +118,8 @@ class SeoText extends Component
     }
 
     /**
+     * Returns all text words numbers.
+     *
      * @param string|null $wordPattern
      * @return int
      * @throws \yii\base\Exception
@@ -125,8 +130,10 @@ class SeoText extends Component
     }
 
     /**
+     * Returns total spaces number.
+     *
      * @param null $spacePattern
-     * @return false|int
+     * @return int
      * @throws \yii\base\Exception
      */
     public function getSpacesCount($spacePattern = null)
@@ -141,6 +148,43 @@ class SeoText extends Component
         }
 
         return $count;
+    }
+
+    /**
+     * Returns all characters count excluding all space characters.
+     *
+     * @param string|null $characterPattern
+     * @return int
+     * @throws \yii\base\Exception
+     */
+    public function getCharactersCount($characterPattern = null)
+    {
+        is_string($characterPattern) ?
+            $pt = $characterPattern : $pt = self::$patterns['character'];
+
+        $this->checkRegex($pt);
+
+        if (false === ($count = preg_match_all($pt, $this->text, $matches))) {
+            throw new Exception(preg_last_error());
+        }
+
+        return $count;
+    }
+
+    /**
+     * Returns total characters including as regular characters as any space characters.
+     *
+     * @param null $characterPattern
+     * @param null $spacePattern
+     * @return int
+     * @throws \yii\base\Exception
+     */
+    public function getTotalCharactersCount($characterPattern = null, $spacePattern = null)
+    {
+        $characters = $this->getCharactersCount($characterPattern);
+        $spaces = $this->getSpacesCount($spacePattern);
+
+        return $characters + $spaces;
     }
 
     /**
