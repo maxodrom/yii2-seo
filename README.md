@@ -5,6 +5,8 @@ provided with frequently used methods to work with and processing SEO texts.
 
 ![SEO image](./seoimage.png)
 
+[Русская документация](docs/README.ru.md)
+
 ## SeoText class
 
 Provides useful methods for source text processing and gathering statistical info
@@ -25,7 +27,7 @@ $totalCharacters = $seoText->getTotalCharactersCount();
 // get only word's characters count
 $wordCharacters = $seoText->getCharactersCount();
 
-// get all spaces number 
+// get all spaces count 
 $totalSpaces = $seoText->getSpacesCount();
 
 ```
