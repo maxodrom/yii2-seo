@@ -17,6 +17,9 @@ use yii\base\InvalidArgumentException;
  * Class SeoText
  * @package maxodrom\yii2seo\components
  * @since 1.0
+ *
+ * @property string $text Source text
+ * @property-read array $words Words from source text
  */
 class SeoText extends Component
 {
@@ -51,6 +54,8 @@ class SeoText extends Component
     }
 
     /**
+     * Gets source text.
+     *
      * @return string
      */
     public function getText()
@@ -59,6 +64,8 @@ class SeoText extends Component
     }
 
     /**
+     * Sets source text for processing.
+     *
      * @param string $text
      * @return $this
      */
@@ -81,6 +88,8 @@ class SeoText extends Component
     }
 
     /**
+     * Gets all source text words as array.
+     *
      * @return array
      */
     public function getWords()
@@ -89,17 +98,9 @@ class SeoText extends Component
     }
 
     /**
-     * @param array $words
-     */
-    public function setWords(array $words = [])
-    {
-        $this->words = $words;
-    }
-
-    /**
      * Splits text into words.
      *
-     * @param null $wordPattern
+     * @param string|null $wordPattern Regex for detecting words in source text. Default is '/[\w\-]+/iu'.
      * @return array[]|false|string[]
      * @throws \yii\base\Exception
      */
@@ -120,7 +121,7 @@ class SeoText extends Component
     /**
      * Returns all text words numbers.
      *
-     * @param string|null $wordPattern
+     * @param string|null $wordPattern Regex for detecting words in source text. Default is '/[\w\-]+/iu'.
      * @return int
      * @throws \yii\base\Exception
      */
@@ -132,7 +133,8 @@ class SeoText extends Component
     /**
      * Returns total spaces number.
      *
-     * @param null $spacePattern
+     * @param string|null $spacePattern Regex for detecting spaces (all kinds or some of them) in source text.
+     * Default regex is '/\s/u'.
      * @return int
      * @throws \yii\base\Exception
      */
@@ -153,7 +155,8 @@ class SeoText extends Component
     /**
      * Returns all characters count excluding all space characters.
      *
-     * @param string|null $characterPattern
+     * @param string|null $characterPattern Regex for detecting all not space characters in source text.
+     * Default is '/\S/iu'.
      * @return int
      * @throws \yii\base\Exception
      * @since 1.1
@@ -175,8 +178,10 @@ class SeoText extends Component
     /**
      * Returns total characters including as regular characters as any space characters.
      *
-     * @param null $characterPattern
-     * @param null $spacePattern
+     * @param null $characterPattern Regex for detecting all not space characters in source text.
+     * Default is '/\S/iu'.
+     * @param null $spacePattern Regex for detecting spaces (all kinds or some of them) in source text.
+     * Default regex is '/\s/u'.
      * @return int
      * @throws \yii\base\Exception
      * @since 1.1
